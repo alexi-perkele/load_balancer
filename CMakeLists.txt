@@ -11,11 +11,14 @@ set(BALANCER_SOURCES ${CMAKE_SOURCE_DIR}/src/balancer.cpp
                      ${CMAKE_SOURCE_DIR}/src/main.cpp
                      ${CMAKE_SOURCE_DIR}/src/balancer_socket.cpp    )
 
+set(BALANCER_HEADERS ${CMAKE_SOURCE_DIR}/include/balancer.h
+                     ${CMAKE_SOURCE_DIR}/include/balancer_socket.h
+                     ${CMAKE_SOURCE_DIR}/include/settings.h         )
+
 set(SETTINGS_SOURCES src/settings.cpp)
 
-add_executable(balancer ${BALANCER_SOURCES} ${OPTIONS_SOURCES})
+add_executable(balancer ${BALANCER_SOURCES} ${SETTINGS_SOURCES} ${BALANCER_HEADERS})
 
-target_include_directories(balancer PRIVATE
-   #     src
+target_include_directories(balancer PUBLIC
         ${CMAKE_SOURCE_DIR}/include
         )
